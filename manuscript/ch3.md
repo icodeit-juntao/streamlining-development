@@ -64,7 +64,7 @@ echo "Error: no test specified" && exit 1
 
 当我们再次运行 `npm test` 时，命令行的输出就会变为：
 
-![npm test的输出](ch3/npm-test.png)
+![npm test](ch3/npm-test.png)
 
 此外，我们还可以在scripts中定义新的任务。比如，我们可以定义一个名为 `start` 的任务，当执行时我们可以打印当前时间：
 
@@ -77,7 +77,7 @@ echo "Error: no test specified" && exit 1
 
 当执行 `npm start` 的时候，命令行中会显示：
 
-![npm start的输出](ch3/npm-start.png)
+![npm start](ch3/npm-start.png)
 
 好了，现在我们对package.json中的scripts节有了一个大致的了解，现在可以开始**今日箴言**的开发了。
 
@@ -181,7 +181,7 @@ npm start
 
 在浏览器中输入 `[http://localhost:3000](http://localhost:3000)` 就可以看到我们第一个版本的**今日箴言**了！
 
-![在本地运行应用](ch3/localhost.png)
+![running in localhost](ch3/localhost.png)
 
 在本章中，我们首先介绍了 Shell和命令行接口的使用，包括如何在命令行中输入命令，如何查看命令的输出，以及如何利用命令行来快速高效地进行开发工作。
 
