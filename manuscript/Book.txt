@@ -1,2 +1,9 @@
-chapter1-the-basics.txt
-chapter2-writing-in-markua.txt
+ch1.md
+ch2.md
+ch3.md
+ch4.md
+ch5.md
+ch6.md
+ch7.md
+ch8.md
+ch9.md
