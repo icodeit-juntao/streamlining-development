@@ -6,7 +6,7 @@
 
 ## Quotable API
 
-我们将使用Q[uotable](https://github.com/lukePeavey/quotable#list-quotes)作为后端的API。Quotable API是一个免费的RESTful API，它提供了大量的名言和格言。每个名言都包含作者、内容以及它们所属的标签或分类。
+我们将使用[Quotable](https://github.com/lukePeavey/quotable#list-quotes)作为后端的API。Quotable API是一个免费的RESTful API，它提供了大量的名言和格言。每个名言都包含作者、内容以及它们所属的标签或分类。
 
 以下是其基本功能：
 
@@ -80,7 +80,7 @@ const App = () => {
 
 当我们刷新页面后，会惊喜的发现页面变成了一片空白。打开浏览器的调试器（inspect页面）会发现控制台的很多错误。
 
-![console error](ch6/console.png)
+![控制台上的错误](ch6/console.png)
 
 这是因为，fetch是一个异步操作，即发送请求时，quotes数组还是空的，但是由于我们使用了`quotes[index].content`这样的表达式来渲染，因此会得到一个访问undefined对象的content属性的错误。
 
@@ -237,7 +237,7 @@ const App = () => {
 
 这样每个部分的指责更加清晰，网络由自定义hook负责，具体的展现由Quote组件完成，而App则负责具体的协调和调用。更重要的是，在获得这些更整洁的代码的同时，我们的自动化测试依然是通过状态。
 
-![end to end](ch6/e2e.png)
+![测试通过](ch6/e2e.png)
 
 也就是说，我们无需担心交付的软件被不小心破坏。
 
