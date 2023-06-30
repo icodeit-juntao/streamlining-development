@@ -35,7 +35,7 @@ npm install cypress --save-dev
 
 来启动配置助手程序：
 
-![cypress init](ch5/cypress-init.png)
+![运行配置助手程序](ch5/cypress-init.png)
 
 我们这里选择E2E Testing，其他暂时按照默认值即可。助手程序会生成一些配置文件，在最后一步，它会提示我们生成一个spec文件，spec即为cypress中的测试描述文件，我们输入一个文件名即可，比如：quote-of-the-day.spec.cy.ts。
 
@@ -61,7 +61,7 @@ node_modules/.bin/cypress run --spec cypress/e2e/quote-of-the-day.spec.cy.js
 
 这条命令使用了`cypress`，通过`—spec`选项指定要运行的测试文件。由于这个测试是cypress自动生成的，因而可以得到一个验证通过的界面。
 
-![end to end](ch5/e2e.png)
+![执行验收测试](ch5/e2e.png)
 
 如果我们查看`quote-of-the-day.spec.cy.js`的内容，可以看到如下代码：
 
