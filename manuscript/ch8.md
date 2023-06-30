@@ -1,4 +1,4 @@
-# 实现持续交付
+## 实现持续交付
 
 在上一章结束的时候，我们本地开发中已经有了很多自动化的机制来保证代码的正确性。而且由于这些配置都是保存在代码库中的，所有的团队成员都有这几乎一样的配置，因而我们的开发和打包方式几乎完美了。
 
@@ -27,7 +27,7 @@ GitHub Actions 是 GitHub 提供的一个自动化工具，让你可以在 GitHu
 
 每个 GitHub Action 工作流都由一个或多个 jobs 组成，而每个 job 又由一系列的步骤组成。这些步骤可以是执行命令、运行脚本，或者使用 GitHub 社区分享的 actions。这里的Runner就是传统CI服务器中的Agent，用于具体的执行任务。
 
-![Github Actions结构](ch8/github-actions.png)
+![github actions](ch8/github-actions.png)
 
 这些工作流可以被各种 GitHub 事件触发，例如推送（push）、拉取请求（pull request）或者发布（release）。你也可以调度工作流在特定时间或间隔运行，就像 cron job 一样。
 
@@ -121,7 +121,7 @@ jobs:
 
 我们将整个`.github`目录提交，然后推送到Github。这将会触发Github Actions执行我们定义好的工作流。
 
-![Github Actions界面](ch8/build-workflow.png)
+![build](ch8/build-workflow.png)
 
 可以看到，我们的工作流成功运行。我们可以在这个基础上扩展`test`，加入更多的步骤。一个常见的任务是打包，即将最终构建出来的文件压缩打包，以供部署时使用。
 
@@ -168,7 +168,7 @@ jobs:
 
 我们加入了`build`和`packaging`两个新的步骤，即首先编译应用程序的源码到`dist`目录，然后用upload-artifact将结果打包并压缩到quote-of-the-day中。
 
-![上传生产包](ch8/upload.png)
+![upload](ch8/upload.png)
 
 非常好，这样我们的软件就不再依赖于任何一个开发者的本地环境了。每个开发可能使用Mac，或者Linux甚至是Windows，只要在CI服务器上（即上面的`ubuntu-latest`）使用的环境与生产环境一致，那么这个包就是就绪的。
 
@@ -260,7 +260,7 @@ deploy:
 
 注意此处需要定义最终的文件名为`github-pages`，这样Github Pages才能正确识别。如果这时候提交代码并推送，在Github的Actions页签上会看到一个错误：
 
-![运行失败](ch8/failed-last.png)
+![failed-last](ch8/failed-last.png)
 
 查看日志可以知道，Github默认地并没有启用“使用Actions进行部署”的功能，因此我们需要在项目的设置中开启这个功能。
 
@@ -271,7 +271,7 @@ Ensure GitHub Pages has been enabled: https://github.com/icodeit-juntao/quote-of
 
 因此我们需要开启标记为`beta`的Github Actions选项：
 
-![启用Actions](ch8/enable-actions.png)
+![enable actions](ch8/enable-actions.png)
 
 除此之外，由于部署需要修改我们的代码库，因此需要为`build.yml`指定写权限。
 
@@ -284,7 +284,7 @@ permissions:
 
 这样我们的应用就终于可以部署成功了。注意看这里任务的依赖，部署任务依赖于验收测试，验收测试依赖于构建。这样以来，如果我们的测试足够细致，那么发布到生产环境的应用一定是可以工作的。
 
-![成功发布](ch8/success.png)
+![success](ch8/success.png)
 
 最终的`build.yml`的代码是这样的：
 

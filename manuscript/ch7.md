@@ -25,7 +25,7 @@ npm init @eslint/config
 
 配置脚本会提问一些问题，我们根据今日箴言的设置配置如下：
 
-![配置ESlint](ch7/init-eslint.png)
+![config eslint](ch7/init-eslint.png)
 
 然后配置脚本会根据我们的选择来决定下载哪些依赖，完成安装之后，我们本地就可以使用eslint进行检查了。
 
@@ -35,7 +35,7 @@ node_modules/.bin/eslint src/
 
 这条命令调用eslint来检查`src`目录，由于我们在上一步采用了airbnb的代码风格（一种比较广泛被使用的规则），因此检查出了这样一些问题。
 
-![执行ESlint检测](ch7/eslint.png)
+![eslint](ch7/eslint.png)
 
 这些错误分别表示在文件`quote-of-the-day/src/useFetchQuotes.js` 中：
 
@@ -89,7 +89,7 @@ npm run lint
 
 这样，当我们在命令行运行`git commit`时，这个hook就会被自动触发。
 
-![pre-commit hook被触发](ch7/pre-commit.png)
+![git commit](ch7/pre-commit.png)
 
 当运行成功后，commit创建成功，否则会报错并失败。我们需要修复代码，然后再次提交。我们用同样的方法可以定义`pre-push`脚本，并在push之前执行`npm run e2e`来保证功能的正确。
 

@@ -140,7 +140,7 @@ npm start
 
 呃，功能好像是没有问题，不过我们的名人名言好像没有居中对齐：
 
-![缺失CSS样式](ch4/missed-css.png)
+![missed css](ch4/missed-css.png)
 
 这是因为我们在打包过程中丢失了CSS文件。在新的代码结构中，我们并没有任何地方提及CSS文件，因此esbuild自然无法知道如何打包。我们可以在`index.jsx`中包含`style.css`：
 
@@ -159,7 +159,7 @@ root.render(<App />);
 
 再次执行`npm run build`，我们可以看到一个名为`main.css`的文件被生成到了`dist`目录。我们只需要在`index.html`中引用这个CSS文件即可。
 
-![运行npm build](ch4/npm-build.png)
+![npm build](ch4/npm-build.png)
 
 修改后的`index.html`文件内容变成了：
 
@@ -193,7 +193,7 @@ root.render(<App />);
 
 这样我们就无须停止`http-server`服务，只需要在另外一个Terminal窗口中执行`npm run watch`即可。
 
-![运行npm watch](ch4/npm-watch.png)
+![npm watch](ch4/npm-watch.png)
 
 ## 实现“下一条”
 
@@ -250,7 +250,7 @@ const App = () => {
 
 同时，在返回的JSX中还包含了一个按钮，其`onClick`属性绑定了`clickHandler`函数。所以每当用户点击这个按钮时，`clickHandler`函数就会被调用，进而更新`index`的值。
 
-![再次运行应用](ch4/fixed.png)
+![localhost](ch4/fixed.png)
 
 ## 小结
 
