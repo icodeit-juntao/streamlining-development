@@ -2,7 +2,7 @@
 
 在很多影视作品中我们经常会看到的一个场景，略显神秘的背景音乐中，一位穿着hoodie的黑客，随意的嚼着口香糖，手指熟练的敲着键盘，黑底绿字的屏幕上一行行的文字快速滚动。黑客时而不屑的轻笑一声，时而表情严肃，最终狠狠的敲击回车键，背景音乐戛然而止，tick tick，屏幕显示某个进度条进行到100%，黑客一脸轻松的往后一靠，躺在椅子上，然后并作出一个搞定的手势。
 
-![Hacking](ch2/hacking.png)
+![Hacking in film](ch2/hacking.png)
 
 电影当然有其夸张的成分和艺术加工，其中快速的文字滚动很可能是在安装某个软件包的日志等，不过不可否认的是，这种操作看起来确实很酷。
 
@@ -17,7 +17,7 @@
 
 一个具体的例子是，你既可以通过鼠标点击“Finder”程序的图标来启动你的文件管理器，也可以在Terminal中敲入”open .”来启动”Finder”应用程序（前提是你已经将code的可执行文件设置到了环境中），两者殊途同归。
 
-![Finder](ch2/finder.png)
+![Finder application](ch2/finder.png)
 
 和命令行接口关系紧密的一个应用程序是Shell（外壳程序），Shell是一种特殊的命令行工具，它提供了一种脚本语言，用户可以使用这种语言来编写自动化任务的脚本。在Unix和类Unix系统（如Linux和macOS）中，Bash（Bourne Again Shell）是最常见的shell，而在Windows中，最常见的shell是PowerShell。
 
@@ -25,7 +25,7 @@ Shell可以理解为用户与系统内核进行交互的媒介。用户在shell�
 
 在Mac上，Terminal是一个应用程序，其为用户提供了一个文本界面来运行Shell。你可以把Terminal看作是一个窗口，允许你访问到Shell。当你在Terminal中键入命令时，你实际上是在告诉Shell执行这些命令。
 
-![lint](ch2/lint.png)
+![Run linting](ch2/lint.png)
 
 综上所述，命令行工具和shell为我们提供了一种强大且灵活的方式来控制和管理计算机系统。虽然它们可能需要一些时间来学习和熟练使用，但是一旦掌握，它们将极大地提高你的生产力。
 
@@ -33,7 +33,7 @@ Shell可以理解为用户与系统内核进行交互的媒介。用户在shell�
 
 我们可以通过一条命令来介绍这本书中会用到的一些术语。一条命令通常由三部分组成，命令（command），参数（argument）和选项（option）。参数和选项在很多时候可以忽略，这时候命令会执行默认的功能，当我们需要特别指明一个命令来执行某项具体任务时，我们可以通过参数和选项来控制。
 
-![command line interface](ch2/cli.png)
+![Command line interface](ch2/cli.png)
 
 在上述命令中，我们执行了 `npm` 命令，传递的参数为 `install` 和 `html2canvas`，选项为 `—save-dev`。在执行时， `npm` 会根据 `install` 参数来安装 `html2canvas` 包，并依据 `—save-dev` 将这个包安装到开发依赖中（即在最终的产品包中不包含这个依赖）。
 
@@ -68,6 +68,29 @@ Shell可以理解为用户与系统内核进行交互的媒介。用户在shell�
     这样，你就可以通过 `./hello.sh` 命令来运行这个脚本了。
     
 
-我们在本书中会着重介绍和使用第二种方式：Shell脚本。在一个脚本中你可以定义很多条不同的命令，比如第一步下载一个文件，第二本解析该文件，第三部根据文件中的某个字段来触发另一个动作等等。我们将在构建脚本这一章中详细讲解。
+我们在本书中会着重介绍和使用第二种方式：Shell脚本。在一个脚本中你可以定义很多条不同的命令，比如第一步下载一个文件，第二本解析该文件，第三部根据文件中的某个字段来触发另一个动作等等。
+
+```bash
+#!/bin/bash
+
+# 定义目录和文件名称
+dir="tools"
+filename="network.conf"
+
+# 检查文件是否存在
+if [ -f "$dir/$filename" ]; then
+  echo "文件 $filename 已存在。"
+  exit 0
+else
+  echo "文件 $filename 不存在。正在下载..."
+  
+  # 下载文件并存入指定目录
+  curl -o "$dir/$filename" https://path-to-your/network.conf
+
+  echo "文件 $filename 已经被下载到 $dir 目录。"
+fi
+```
+
+此脚本首先检查在tools目录下是否存在名为network.conf的文件。如果存在，脚本将打印出一条消息并退出。如果不存在，脚本将从指定的URL下载network.conf文件并保存到tools目录下。
 
 以上就是所有的准备工作，我们了解了Shell和命令行接口的基本知识，在接下来的内容中，我们将通过实现**今日箴言**应用来进一步学习如何定义构建脚本，以及如何使用脚本来自动化编程任务。
